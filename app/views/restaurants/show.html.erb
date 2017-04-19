@@ -1,22 +1,45 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-4">
-      <h1><%= @restaurant.name %></h1>
-      <ul class="list-unstyled">
-        <li>Address: <%= @restaurant.address %></li>
-        <li>Phone: <%= @restaurant.phone_number %></li>
-        <li>Cuisine: <%= @restaurant.category.capitalize %></li>
-      </ul>
-      <h3>Reviews</h3>
-      <ul class="list-unstyled">
-        <% @restaurant.reviews.each do |review| %>
-          <li>"<%= review.content %>"</li>
-          <li><strong>Rating:</strong> <%= review.rating %>/5</li>
-        <% end %>
-      </ul>
-      <h3>Write a new review</h3>
-      <div class="form">
-        <%= render template: "reviews/_form.html.erb" %>
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <div class="card">
+          <h1><%= @restaurant.name %></h1>
+          <ul class="list-unstyled">
+            <li>
+              <ul class="list-inline">
+                <li><strong>Address:</strong> </li>
+                <li><%= @restaurant.address %></li>
+              </ul>
+            </li>
+            <li>
+              <ul class="list-inline">
+                <li><strong>Phone: </strong></li>
+                <li><%= @restaurant.phone_number %></li>
+              </ul>
+            <li>
+              <ul class="list-inline">
+                <li><strong>Cuisine:</strong></li>
+                <li><%= @restaurant.category.capitalize %></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Reviews</h3>
+          <ul class="list-unstyled text-center">
+            <% @restaurant.reviews.each do |review| %>
+              <li>"<%= review.content %>"</li>
+              <li><strong>Rating:</strong> <%= review.rating %>/5</li>
+              <hr>
+            <% end %>
+          </ul>
+        </div>
+        <div class="card padded">
+          <h3>Write a new review</h3>
+          <div class="form">
+            <%= render template: "reviews/_form.html.erb" %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
