@@ -7,7 +7,6 @@
         <li>Phone: <%= @restaurant.phone_number %></li>
         <li>Cuisine: <%= @restaurant.category.capitalize %></li>
       </ul>
-      <p><%= link_to "Write a new review", new_restaurant_review_path(@restaurant) %></p>
       <h3>Reviews</h3>
       <ul class="list-unstyled">
         <% @restaurant.reviews.each do |review| %>
@@ -15,6 +14,10 @@
           <li><strong>Rating:</strong> <%= review.rating %>/5</li>
         <% end %>
       </ul>
+      <h3>Write a new review</h3>
+      <div class="form">
+        <%= render template: "reviews/_form.html.erb" %>
+      </div>
     </div>
   </div>
 </div>
